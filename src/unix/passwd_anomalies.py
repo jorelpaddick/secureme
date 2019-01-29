@@ -1,8 +1,7 @@
 #!/usr/local/bin/python3
 # Define the color class
 import sys # for below
-sys.path.insert(0, "/Users/jorel/Code/secureme/termout.py")
-import termout
+import utils.termout as termout
 import json # import the json library
 import datetime # used to get human readable time format
 
@@ -247,9 +246,5 @@ def main():
     finally:
         termout.kill_logging()
 
-
-
-       
-        
 if __name__ == "__main__":
     main()

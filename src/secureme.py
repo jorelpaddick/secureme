@@ -106,7 +106,11 @@ def get_platform():
 #             print(e)
 
 def perform_unix_checks():
-    import unix.termout
+    import unix.passwd_anomalies
+    import unix.executable_signature
+
+    unix.passwd_anomalies.main()
+    unix.executable_signature.main()
 
 def main():
     """Main entry point"""

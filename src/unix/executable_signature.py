@@ -1,7 +1,7 @@
 #!/usr/local/bin/python3
 import sys
 import os
-import termout
+import utils.termout as termout
 import hashlib
 import json
 
