@@ -25,43 +25,71 @@ class Color():
 
 def print_title(data):
     print(Color.HEADER+ "*** " + data + " ***" + Color.END + "\n")
-    if set_logging.logfile is not None:
-        set_logging.logfile.write("*** " + data + " ***\n\n")
+    try:
+        if set_logging.logfile is not None:
+            set_logging.logfile.write("*** " + data + " ***\n\n")
+    except AttributeError:
+        pass
+
 
 def print_subtitle(data):
     print(Color.UNDERLINE+ data + Color.END)
-    if set_logging.logfile is not None:
-        set_logging.logfile.write(data + "\n")
+    try:
+        if set_logging.logfile is not None:
+            set_logging.logfile.write(data + "\n")
+    except AttributeError:
+        pass
 
 def print_emphasis(data):
     print(Color.BOLD + data + Color.END)
-    if set_logging.logfile is not None:
-        set_logging.logfile.write(data + "\n")
+    try:
+        if set_logging.logfile is not None:
+            set_logging.logfile.write(data + "\n")
+    except AttributeError:
+        pass
+    
 
 def print_info(data):
     print(Color.OKBLUE + "[INFO] " + Color.END + data)
-    if set_logging.logfile is not None:
-        set_logging.logfile.write("[INFO] " + data + "\n")
+    try:
+        if set_logging.logfile is not None:
+            set_logging.logfile.write("[INFO] " + data + "\n")
+    except AttributeError:
+        pass
+
 
 def print_ok(data):
     print(Color.OKGREEN + "[OK] " + Color.END + data)
-    if set_logging.logfile is not None:
-        set_logging.logfile.write("[OK] " + data + "\n")
+    try:
+        if set_logging.logfile is not None:
+            set_logging.logfile.write("[OK] " + data + "\n")
+    except AttributeError:
+        pass
 
 def print_warning(data):
     print(Color.WARN + "[WARN] " + Color.END + data)
-    if set_logging.logfile is not None:
-        set_logging.logfile.write("[WARN] " + data + "\n")
+    try:
+        if set_logging.logfile is not None:
+            set_logging.logfile.write("[WARN] " + data + "\n")
+    except AttributeError:
+        pass
+
 
 def print_critical(data):
     print(Color.FAIL+ "[CRITICAL] " + data + Color.END)
-    if set_logging.logfile is not None:
-        set_logging.logfile.write("[CRITICAL] " + data + "\n")
+    try:
+        if set_logging.logfile is not None:
+            set_logging.logfile.write("[CRITICAL] " + data + "\n")
+    except AttributeError:
+        pass
 
 def print_error(data):
     print(Color.FAIL+ "[ERROR] " + Color.END + data)
-    if set_logging.logfile is not None:
-        set_logging.logfile.write("[ERROR] " + data + "\n")
+    try:
+        if set_logging.logfile is not None:
+            set_logging.logfile.write("[ERROR] " + data + "\n")
+    except AttributeError:
+        pass
 
 # def main():
 #     print("This module makes terminal logging neat.\n")

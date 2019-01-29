@@ -106,7 +106,7 @@ def get_platform():
 #             print(e)
 
 def perform_unix_checks():
-    pass
+    import unix.termout
 
 def main():
     """Main entry point"""
@@ -132,6 +132,7 @@ def main():
         time.sleep(1)
         # execute_scripts(scripts)
     elif platform == 'Linux':
+        perform_unix_checks()
         # scripts = load_unix_scripts() 
         # scripts.extend(load_linux_scripts())
         time.sleep(1)
