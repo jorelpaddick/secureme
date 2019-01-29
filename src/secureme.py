@@ -81,13 +81,9 @@ def get_platform():
 #     """Targets the linux scripts directory and collates the runnable
 #         scripts for exectution."""
 #     print("Loading Linux Scripts...")
-
 #     path = "scripts/linux/"
-
 #     contents = load_path(path)
-
 #     scripts = []
-
 #     for item in contents:
 #         if os.path.isfile(path + item):
 #             item_name, item_ext = os.path.splitext(path + item)
