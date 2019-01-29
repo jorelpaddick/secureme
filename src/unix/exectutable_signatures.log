@@ -1,0 +1,6 @@
+*** Simple Binary Signature Analyser ***
+
+Writen by Jorel Paddick 2019
+Starting module.
+[INFO] Checking single user mode executables...
+[OK] Found 35 items in /bin
