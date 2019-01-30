@@ -1,1 +1,1 @@
-1.  Add logging to desired destination - Command line argument
+BUG 0x01: If output directory has no slash, it appends to the filename instead
