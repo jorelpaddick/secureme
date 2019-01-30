@@ -48,7 +48,6 @@ def print_emphasis(data):
     except AttributeError:
         pass
     
-
 def print_info(data):
     print(Color.OKBLUE + "[INFO] " + Color.END + data)
     try:
@@ -56,7 +55,6 @@ def print_info(data):
             set_logging.logfile.write("[INFO] " + data + "\n")
     except AttributeError:
         pass
-
 
 def print_ok(data):
     print(Color.OKGREEN + "[OK] " + Color.END + data)

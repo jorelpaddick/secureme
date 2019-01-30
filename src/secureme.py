@@ -112,23 +112,32 @@ def perform_unix_checks():
     unix.passwd_anomalies.main()
     unix.executable_signature.main()
 
-def main():
-    """Main entry point"""
+def switch_handler():
+    output = "log/"
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', '--interactive', 
             help='Run with a basic interactive user interface',
             action='store_true')
+    parser.add_argument('-o','--output-dir', 
+            help="Directory for storing output files")
     args = parser.parse_args()
     if(args.interactive == True):
-        print("Hello World")
-        exit(9)
+        print("Unavailable")
+        exit(1)
+    if(args.output_dir is not None):
+        output = args.output_dir
+    return output
+
+
+
+def main():
+    """Main entry point"""
+    output = switch_handler()
     print("==== Secure Me Script for Kiddies ==== ")
     print("** Writen By Jorel Paddick **")
-    
     platform = get_platform()
     time.sleep(1)
     print("Loading scripts. Press CTR-C to Stop")
-
     if(platform == 'Darwin'):
         perform_unix_checks()
         # scripts = load_unix_scripts() 
