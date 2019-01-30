@@ -1,0 +1,21 @@
+*** Simple Binary Signature Analyser ***
+
+Writen by Jorel Paddick 2019
+Starting module.
+[INFO] Checking single user mode executables...
+[OK] Found 35 items in /bin/
+[OK] 35 hashes calculated - see logs
+[OK] Found 62 items in /sbin/
+[OK] 62 hashes calculated - see logs
+[OK] Found 970 items in /usr/bin/
+[ERROR] Could not open file: [Errno 13] Permission denied: '/usr/bin/sudo'
+    please ensure root permissions
+[OK] 970 hashes calculated - see logs
+[OK] Found 496 items in /usr/local/bin/
+[OK] 493 hashes calculated - see logs
+[OK] Found 237 items in /usr/sbin/
+[ERROR] Could not open file: [Errno 13] Permission denied: '/usr/sbin/cupsd'
+    please ensure root permissions
+[ERROR] Could not open file: [Errno 13] Permission denied: '/usr/sbin/visudo'
+    please ensure root permissions
+[OK] 235 hashes calculated - see logs
