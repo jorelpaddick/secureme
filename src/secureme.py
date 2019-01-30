@@ -108,8 +108,10 @@ def execute_scripts(scripts):
 def perform_unix_checks(outdir):
     import unix.passwd_anomalies
     import unix.executable_signature
+    import unix.permission_anomalies
     unix.passwd_anomalies.main(outdir)
     unix.executable_signature.main(outdir)
+    unix.permission_anomalies.main(outdir)
 
 def switch_handler():
     output = "../log/"
