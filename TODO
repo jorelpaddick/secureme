@@ -1,7 +1,6 @@
 BUG 0x01: If output directory has no slash, it appends to the filename instead
 BUG 0x02: Fix mains of individual python files
 
-
 FEAT: Permission Anomalies detection on UNIX
 FEAT: List of services and deamons
 FEAT: Server Role? System Role?
