@@ -41,6 +41,9 @@ def main(outdir):
     print_title("UNIX Permission Check")
     print_subtitle("Created by Jorel Paddick\n")
     check_etc()
+    # Get a list of all globally writeable files,
+    # Check if these files are not in home directories or tmp
+    # get a list of invalid SUID and GUID files
 
 if __name__ == "__main__":
     main("./")
