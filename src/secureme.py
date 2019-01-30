@@ -27,83 +27,83 @@ def get_platform():
 
     return platform.system()
 
-# def load_path(path):
-#     """Checks that the given path is an accessible 
-#        directory and gets the contents within"""
-#     if os.path.isdir(path):
-#        contents = os.listdir(path) 
-#     else:
-#         raise IOError("cannot access directory: " + path)
+def load_path(path):
+    """Checks that the given path is an accessible 
+       directory and gets the contents within"""
+    if os.path.isdir(path):
+       contents = os.listdir(path) 
+    else:
+        raise IOError("cannot access directory: " + path)
 
-#     return contents
+    return contents
  
-# def load_unix_scripts():
-#     """Targets the unix scripts directory and collates the runnable
-#         scripts for exectution."""
-#     print("Loading UNIX Generic Scripts...")
-#     path = "scripts/unix/"
+def load_unix_scripts():
+    """Targets the unix scripts directory and collates the runnable
+        scripts for exectution."""
+    print("Loading UNIX Generic Scripts...")
+    path = "../scripts/unix/"
 
-#     contents = load_path(path)
+    contents = load_path(path)
 
-#     scripts = []
+    scripts = []
 
-#     for item in contents:
-#         if os.path.isfile(path + item):
-#             item_name, item_ext = os.path.splitext(path + item)
-#             if ".sh" in item_ext or ".py" in item_ext:
-#                 print(item_name + " script found")
-#                 scripts.append(item_name + item_ext)
+    for item in contents:
+        if os.path.isfile(path + item):
+            item_name, item_ext = os.path.splitext(path + item)
+            if ".sh" in item_ext or ".py" in item_ext:
+                print(item_name + " script found")
+                scripts.append(item_name + item_ext)
 
-#     return scripts
+    return scripts
 
-# def load_darwin_scripts():
-#     """Targets the macos scripts directory and collates the runnable
-#         scripts for exectution."""
-#     print("Loading Darwin Scripts...")
+def load_darwin_scripts():
+    """Targets the macos scripts directory and collates the runnable
+        scripts for exectution."""
+    print("Loading Darwin Scripts...")
 
-#     path = "scripts/macos/"
+    path = "../scripts/macos/"
 
-#     contents = load_path(path)
+    contents = load_path(path)
 
-#     scripts = []
+    scripts = []
 
-#     for item in contents:
-#         if os.path.isfile(path + item):
-#             item_name, item_ext = os.path.splitext(path + item)
-#             """NOTE: Could also add support for apple scripts here"""
-#             if ".sh" in item_ext or ".py" in item_ext:
-#                 print(item_name + " script found")
-#                 scripts.append(item_name + item_ext)
+    for item in contents:
+        if os.path.isfile(path + item):
+            item_name, item_ext = os.path.splitext(path + item)
+            """NOTE: Could also add support for apple scripts here"""
+            if ".sh" in item_ext or ".py" in item_ext:
+                print(item_name + " script found")
+                scripts.append(item_name + item_ext)
 
-#     return scripts
+    return scripts
 
-# def load_linux_scripts():
-#     """Targets the linux scripts directory and collates the runnable
-#         scripts for exectution."""
-#     print("Loading Linux Scripts...")
-#     path = "scripts/linux/"
-#     contents = load_path(path)
-#     scripts = []
-#     for item in contents:
-#         if os.path.isfile(path + item):
-#             item_name, item_ext = os.path.splitext(path + item)
-#             """NOTE: Could also add support for apple scripts here"""
-#             if ".sh" in item_ext or ".py" in item_ext:
-#                 print(item_name + " script found")
-#                 scripts.append(item_name + item_ext)
+def load_linux_scripts():
+    """Targets the linux scripts directory and collates the runnable
+        scripts for exectution."""
+    print("Loading Linux Scripts...")
+    path = "../scripts/linux/"
+    contents = load_path(path)
+    scripts = []
+    for item in contents:
+        if os.path.isfile(path + item):
+            item_name, item_ext = os.path.splitext(path + item)
+            """NOTE: Could also add support for apple scripts here"""
+            if ".sh" in item_ext or ".py" in item_ext:
+                print(item_name + " script found")
+                scripts.append(item_name + item_ext)
 
-#     return scripts
+    return scripts
 
-# def execute_scripts(scripts):
-#     """Exectute a given list of scripts"""
-#     import subprocess
-#     print("\n!!!! Launching Scripts !!!!\n")
-#     for script in scripts:
-#         try:
-#             subprocess.call(script)
-#         except Exception as e:
-#             print("Failed to run script: " + script)
-#             print(e)
+def execute_scripts(scripts):
+    """Exectute a given list of scripts"""
+    import subprocess
+    print("\n!!!! Launching Scripts !!!!\n")
+    for script in scripts:
+        try:
+            subprocess.call(script)
+        except Exception as e:
+            print("Failed to run script: " + script)
+            print(e)
 
 def perform_unix_checks(outdir):
     import unix.passwd_anomalies
@@ -138,20 +138,19 @@ def main():
     print("Loading scripts. Press CTR-C to Stop")
     if(platform == 'Darwin'):
         perform_unix_checks(output)
-        # scripts = load_unix_scripts() 
-        # scripts.extend(load_darwin_scripts())
+        scripts = load_unix_scripts() 
+        scripts.extend(load_darwin_scripts())
         time.sleep(1)
-        # execute_scripts(scripts)
+        execute_scripts(scripts)
     elif platform == 'Linux':
-        # perform_unix_checks()
-        # scripts = load_unix_scripts() 
-        # scripts.extend(load_linux_scripts())
+        perform_unix_checks(output)
+        scripts = load_unix_scripts() 
+        scripts.extend(load_linux_scripts())
         time.sleep(1)
-        # execute_scripts(scripts)
+        execute_scripts(scripts)
     elif platform == 'Windows':
         print("Windows is not yet Supported")
         time.sleep(1)
-        # execute_scripts(scripts)
         print("Abort.")
     else:
         print("Operating System " + platform + " is not suppored. \nAbort. ")
