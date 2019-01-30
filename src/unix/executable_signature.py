@@ -51,9 +51,9 @@ def export_json(json_string, filename):
     except Exception as error:
         termout.print_error("Failed to write to file - " + str(error))
 
-def main():
+def main(outdir):
     # Enable logging to file
-    termout.set_logging("executable_signatures.log")
+    termout.set_logging(outdir + "executable_signatures.log")
     termout.print_title("Simple Binary Signature Analyser")
     termout.print_subtitle("Writen by Jorel Paddick 2019")
     termout.print_emphasis("Starting module.")
@@ -68,7 +68,7 @@ def main():
     execs["/usr/sbin/"] = bin_analyser("/usr/sbin/")
     # Serialise the hashes
     json_formated_execs = jsonize(execs)
-    export_json(json_formated_execs, "executable_signatures.json")
+    export_json(json_formated_execs, outdir + "executable_signatures.json")
 
 if __name__ == "__main__":
-    main()
+    print("Fix Me.")

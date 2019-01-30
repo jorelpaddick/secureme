@@ -105,15 +105,15 @@ def get_platform():
 #             print("Failed to run script: " + script)
 #             print(e)
 
-def perform_unix_checks():
+def perform_unix_checks(outdir):
     import unix.passwd_anomalies
     import unix.executable_signature
 
-    unix.passwd_anomalies.main()
-    unix.executable_signature.main()
+    unix.passwd_anomalies.main(outdir)
+    unix.executable_signature.main(outdir)
 
 def switch_handler():
-    output = "log/"
+    output = "../log/"
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', '--interactive', 
             help='Run with a basic interactive user interface',
@@ -128,8 +128,6 @@ def switch_handler():
         output = args.output_dir
     return output
 
-
-
 def main():
     """Main entry point"""
     output = switch_handler()
@@ -139,13 +137,13 @@ def main():
     time.sleep(1)
     print("Loading scripts. Press CTR-C to Stop")
     if(platform == 'Darwin'):
-        perform_unix_checks()
+        perform_unix_checks(output)
         # scripts = load_unix_scripts() 
         # scripts.extend(load_darwin_scripts())
         time.sleep(1)
         # execute_scripts(scripts)
     elif platform == 'Linux':
-        perform_unix_checks()
+        # perform_unix_checks()
         # scripts = load_unix_scripts() 
         # scripts.extend(load_linux_scripts())
         time.sleep(1)

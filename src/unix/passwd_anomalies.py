@@ -209,8 +209,8 @@ def invalid_password_check(user_list):
             invalid_users.append(user)
     return invalid_users
 
-def main():
-    termout.set_logging("passwd.log")
+def main(outdir):
+    termout.set_logging(outdir + "passwd.log")
     termout.print_title("UNIX passwd Security Check")
     termout.print_subtitle("Created by Jorel Paddick\n")
     termout.print_info("Start: " + str(datetime.datetime.now()))
@@ -247,4 +247,4 @@ def main():
         termout.kill_logging()
 
 if __name__ == "__main__":
-    main()
+    print("Fix Me")
