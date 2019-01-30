@@ -108,7 +108,6 @@ def get_platform():
 def perform_unix_checks(outdir):
     import unix.passwd_anomalies
     import unix.executable_signature
-
     unix.passwd_anomalies.main(outdir)
     unix.executable_signature.main(outdir)
 
