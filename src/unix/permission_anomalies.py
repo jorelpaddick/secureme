@@ -41,7 +41,7 @@ def find_global_writable():
     ROOT = "/"
     global_writable = recursive_search_permissions("/")
     print(global_writable)
-
+    return global_writable
 
 def recursive_search_permissions(root):
     writeable_items = []
@@ -50,12 +50,19 @@ def recursive_search_permissions(root):
         for item in root_contents:
             writeable_perms = ['2', '3', '6', '7']
             full_perms = oct(os.stat(root+item)[0])
+            kind = full_perms[:-4]
             mode = full_perms[-4:] 
             world = mode[3]
             if (world in writeable_perms):
                 print_info(root + item + " is global writable [" + world + "]")
                 writeable_items.append(root+item)
-            if(os.path.isdir(root+item)):
+            """
+            FOR SOME REASON If the block below exists then some files like /tmp
+            are missed!!! WTF. @Future please find out what the heck is happening. It's not even that /tmp is missed its more like the
+            block above doesn't even run. But then if you comment out the block
+            below this, it does.
+            """
+            if(kind == "0o4"):
                 writeable_items.extend(recursive_search_permissions(
                          root+item + "/"))
     except Exception as error:
@@ -63,19 +70,24 @@ def recursive_search_permissions(root):
     return writeable_items
     # EXPORT THIS LIST AS JSON WHEN IT WORKS
 
-            
+def sanity_check_globals(global_files):
+    pass #@FUTURE
 
+def sguid_search():
+    pass
 
 def main(outdir):
     set_logging(outdir + "permissions.log")
     print_title("UNIX Permission Check")
     print_subtitle("Created by Jorel Paddick\n")
+    # Do a basic check of the /etc/ file permissions (inc passwd)
     check_etc()
-    find_global_writable()
-    # Get a list of all globally writeable files,
-    # Call a subprocess to do this and store its results in the log dir
+    # Search for globally writeable files
+    global_files = find_global_writable() #@FUTURE Multi-task this
     # Check if these files are not in home directories or tmp
+    sanity_check_globals(global_files)
     # get a list of invalid SUID and GUID files
+    sguid_search()
 
 if __name__ == "__main__":
     main("./")

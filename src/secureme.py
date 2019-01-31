@@ -42,31 +42,23 @@ def load_unix_scripts():
         scripts for exectution."""
     print("Loading UNIX Generic Scripts...")
     path = "../scripts/unix/"
-
     contents = load_path(path)
-
     scripts = []
-
     for item in contents:
         if os.path.isfile(path + item):
             item_name, item_ext = os.path.splitext(path + item)
             if ".sh" in item_ext or ".py" in item_ext:
                 print(item_name + " script found")
                 scripts.append(item_name + item_ext)
-
     return scripts
 
 def load_darwin_scripts():
     """Targets the macos scripts directory and collates the runnable
         scripts for exectution."""
     print("Loading Darwin Scripts...")
-
     path = "../scripts/macos/"
-
     contents = load_path(path)
-
     scripts = []
-
     for item in contents:
         if os.path.isfile(path + item):
             item_name, item_ext = os.path.splitext(path + item)
@@ -74,7 +66,6 @@ def load_darwin_scripts():
             if ".sh" in item_ext or ".py" in item_ext:
                 print(item_name + " script found")
                 scripts.append(item_name + item_ext)
-
     return scripts
 
 def load_linux_scripts():
