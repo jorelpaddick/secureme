@@ -1,0 +1,30 @@
+*** UNIX passwd Security Check ***
+
+Created by Jorel Paddick
+
+[INFO] Start: 2019-01-31 11:06:57.926648
+[INFO] Opening passwd file
+[OK] passwd open
+[INFO] searching users
+[OK] Found 98 users.
+[INFO] 98/98 users disabled
+[INFO] 0 locked users
+[INFO] Checking duplicate fields
+[OK] No duplicate usernames
+[INFO] Found Duplicate GID: -2 for user _update_sharing(95)
+[INFO] Found Duplicate GID: -2 for user _installer(96)
+[INFO] Found Duplicate GID: -2 for user _ftp(98)
+[INFO] Found Duplicate GID: 6 for user _dovecot(214)
+[INFO] Found Duplicate GID: -2 for user _krbtgt(217)
+[INFO] Found Duplicate GID: -2 for user _kadmin_admin(218)
+[INFO] Found Duplicate GID: -2 for user _kadmin_changepw(219)
+[INFO] Found Duplicate GID: -2 for user _avbdeviced(229)
+[INFO] Found Duplicate GID: -2 for user _krb_krbtgt(230)
+[INFO] Found Duplicate GID: -2 for user _krb_kadmin(231)
+[INFO] Found Duplicate GID: -2 for user _krb_changepw(232)
+[INFO] Found Duplicate GID: -2 for user _krb_kerberos(233)
+[INFO] Found Duplicate GID: -2 for user _krb_anonymous(234)
+[INFO] Found Duplicate GID: -2 for user _krbfast(246)
+[INFO] Checking for invalid password setups
+[OK] Password setup is correct
+[OK] Check Completed.
