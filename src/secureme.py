@@ -24,7 +24,6 @@ def get_platform():
     print("CPU: " + platform.processor())
     print("Verbose: " + platform.platform())
     print("Version: " + platform.version())
-
     return platform.system()
 
 def load_path(path):
@@ -34,7 +33,6 @@ def load_path(path):
        contents = os.listdir(path) 
     else:
         raise IOError("cannot access directory: " + path)
-
     return contents
  
 def load_unix_scripts():
@@ -82,7 +80,6 @@ def load_linux_scripts():
             if ".sh" in item_ext or ".py" in item_ext:
                 print(item_name + " script found")
                 scripts.append(item_name + item_ext)
-
     return scripts
 
 def execute_scripts(scripts):
