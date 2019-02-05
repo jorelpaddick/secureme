@@ -76,7 +76,6 @@ def load_linux_scripts():
     for item in contents:
         if os.path.isfile(path + item):
             item_name, item_ext = os.path.splitext(path + item)
-            """NOTE: Could also add support for apple scripts here"""
             if ".sh" in item_ext or ".py" in item_ext:
                 print(item_name + " script found")
                 scripts.append(item_name + item_ext)
