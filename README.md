@@ -15,6 +15,7 @@ to corruption by a user.
 * CPU Analysis + frequency
 * Update listings?
 * Add color to main
+* Obtain full system information on macos
 
 ### Known Bugs
 * [ ] BUG 0x01: If output directory has no slash, it appends to the filename instead
