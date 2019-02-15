@@ -1,0 +1,15 @@
+*** Simple Binary Signature Analyser ***
+
+Writen by Jorel Paddick 2019
+Starting module.
+[INFO] Checking single user mode executables...
+[OK] Found 35 items in /bin/
+[OK] 35 hashes calculated - see logs
+[OK] Found 62 items in /sbin/
+[OK] 62 hashes calculated - see logs
+[OK] Found 970 items in /usr/bin/
+[OK] 970 hashes calculated - see logs
+[OK] Found 496 items in /usr/local/bin/
+[OK] 493 hashes calculated - see logs
+[OK] Found 237 items in /usr/sbin/
+[OK] 236 hashes calculated - see logs

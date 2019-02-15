@@ -5,8 +5,10 @@ files and directories with permissions that are 'out of place'.
 For example, globally writable files which should not be writable or 
 files such as /etc/shadow which should not even be readable (except by root).
 This module will also check for invalid GUID and SUID permission settings.
+Note that this moduel will not actually check shadow as that is not 'UNIX' 
+unix specific but is for Linux.
 """
-from utils.termout import *
+import utils.termout as termout # Required for logging
 import os # Required to check file modes
 import stat # As above
 import subprocess # Required to run external commands -> find
@@ -16,23 +18,30 @@ def check_mode(file, expected_mode):
     Check the 'file' for 'expected_mode' expected permissions)
     as an octal value '0000'
     """
+    # Retrieve the file permissions from the OS
     full_perms = oct(os.stat(file)[0])
+    # Shave off the first four digits (they give us the file type)
     mode = full_perms[-4:] 
-    print_info("Mode for " + file + ": " + mode)
-    print_info("    ^[" + full_perms + "]")
+    # We now have a four digit file mode
+    termout.print_info("Mode for " + file + ": " + mode)
+    termout.print_info("    ^[" + full_perms + "]")
+    # Set return value to TRUE  (assume correct)
     correct = True
+    # Compare the mode with the expected mode
     if(mode != expected_mode):
-        print_warning("Permissions invalid for " + file + "!")
+        termout.print_warning("Permissions invalid for " + file + "!")
+        # Set return value to FALSE if expected differs 
         correct = False
     else:
-        print_ok("Permissions for " + file + " are good")
+        # All is well
+        termout.print_ok("Permissions for " + file + " are good")
     return correct
 
 def check_etc():
     PASSWD = "/etc/passwd"
     SHADOW = "/etc/shadow"
     if(check_mode(PASSWD, "0644") == False):
-        print_critical("/etc/passwd FILE PERMISSIONS INCORRECT!")
+        termout.print_critical("/etc/passwd FILE PERMISSIONS INCORRECT!")
     # if(check_file(SHADOW, "0644") == False):
     #     print_critical("/etc/shadow FILE PERMISSIONS INCORRECT!") 
     # this is linux specific
@@ -54,7 +63,7 @@ def recursive_search_permissions(root):
             mode = full_perms[-4:] 
             world = mode[3]
             if (world in writeable_perms):
-                print_info(root + item + " is global writable [" + world + "]")
+                termout.print_info(root + item + " is global writable [" + world + "]")
                 writeable_items.append(root+item)
             """
             FOR SOME REASON If the block below exists then some files like /tmp
@@ -66,7 +75,7 @@ def recursive_search_permissions(root):
                 writeable_items.extend(recursive_search_permissions(
                          root+item + "/"))
     except Exception as error:
-        print_error(str(error))
+        termout.print_error(str(error))
     return writeable_items
     # EXPORT THIS LIST AS JSON WHEN IT WORKS
 
@@ -77,9 +86,9 @@ def sguid_search():
     pass
 
 def main(outdir):
-    set_logging(outdir + "permissions.log")
-    print_title("UNIX Permission Check")
-    print_subtitle("Created by Jorel Paddick\n")
+    termout.set_logging(outdir + "permissions.log")
+    termout.print_title("UNIX Permission Check")
+    termout.print_subtitle("Created by Jorel Paddick\n")
     # Do a basic check of the /etc/ file permissions (inc passwd)
     check_etc()
     # Search for globally writeable files
