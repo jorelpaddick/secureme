@@ -69,7 +69,7 @@ def recursive_search_permissions(root):
             FOR SOME REASON If the block below exists then some files like /tmp
             are missed!!! WTF. @Future please find out what the heck is happening. It's not even that /tmp is missed its more like the
             block above doesn't even run. But then if you comment out the block
-            below this, it does.
+            below this, it does..
             """
             if(kind == "0o4"):
                 writeable_items.extend(recursive_search_permissions(
